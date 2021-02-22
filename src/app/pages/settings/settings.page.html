@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="secondary">
+        <ion-title class="header">Settings</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button content-id="main-content"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<div class="accountInfo">
+    <img [src]="userAccount"><br>
+    Name: <h1>{{ userName }}</h1>
+    Email: <p>{{ userEmail }}</p>
+</div>
+<ion-content>
+    <div class="settings">
+        <ion-list lines="none" class="menu-items">
+            <div class="settings-header">
+                <span>Account</span>
+            </div>
+            <ion-item [routerLink]="['/side-bar/acc-info']" class="account">
+                <ion-icon name="person-outline"></ion-icon>
+                <ion-label>Account Information</ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/side-bar/user-ratings']">
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-label>User Ratings</ion-label>
+                <!-- <ion-icon slot="end" name="arrow-forward"></ion-icon> -->
+            </ion-item>
+            <ion-item [routerLink]="['/side-bar/suki']">
+                <ion-icon name="people-outline"></ion-icon>
+                <ion-label>Suki</ion-label>
+                <!-- <ion-icon slot="end" name="arrow-forward"></ion-icon> -->
+            </ion-item>
+            <div class="settings-header">
+                <span>Information</span>
+            </div>
+
+            <ion-item [routerLink]="['/side-bar/privacy-policy']">
+                <ion-icon name="key-outline"></ion-icon>
+                <ion-label>Privacy Policy</ion-label>
+                <!-- <ion-icon slot="end" name="arrow-forward"></ion-icon> -->
+            </ion-item>
+            <ion-item [routerLink]="['/side-bar/terms-conditions']">
+                <ion-icon name="newspaper-outline"></ion-icon>
+                <ion-label>Terms and Conditions</ion-label>
+                <!-- <ion-icon slot="end" name="arrow-forward"></ion-icon> -->
+            </ion-item>
+            <ion-item [routerLink]="['/side-bar/price-rates']">
+                <ion-icon name="pricetags-outline"></ion-icon>
+                <ion-label>Price Rates</ion-label>
+                <!-- <ion-icon slot="end" name="arrow-forward"></ion-icon> -->
+            </ion-item>
+            <ion-item [routerLink]="['/side-bar/faq']">
+                <ion-icon name="help-outline"></ion-icon>
+                <ion-label>Frequently Ask Question</ion-label>
+                <!-- <ion-icon slot="end" name="arrow-forward"></ion-icon> -->
+            </ion-item>
+            <div class="settings-header">
+                <span>Ms Q Artisan</span>
+            </div>
+            <ion-item [routerLink]="['/side-bar/all-settings']">
+                <ion-icon name="cog-outline"></ion-icon>
+                <ion-label>All Settings</ion-label>
+                <!-- <ion-icon slot="end" name="arrow-forward"></ion-icon> -->
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

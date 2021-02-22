@@ -1,0 +1,92 @@
+<ion-header [translucent]="false">
+    <ion-toolbar color="secondary">
+        <ion-title class="header">Job Orders</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button content-id="main-content"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="div1">
+        <div class="toggle">
+            <label class="switch">
+                <p *ngIf="apple" class="tags">Disable Receive Work</p>
+                <p *ngIf="!apple" class="tags">Enable Receive Work</p>
+                <input type="checkbox" checked (click)="hideAndShow()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="searchbar" *ngIf=apple>
+            <ion-searchbar placeholder="Search by service category..." [(ngModel)]="filterService" (ionChange)="FilteredByService(FinalArrayJobs,$event)"
+                animated="true"></ion-searchbar>
+        </div>
+        
+    </div>
+    <br><br><br><br>
+
+    <div class="toggleRest" *ngIf=!apple>
+        <ion-card class="statusCard">
+            <ion-card-content>
+                <ion-icon size=large class="warning" name="warning"></ion-icon>
+                <ion-card-title class="status">Status is Offline</ion-card-title><br>
+                <ion-label class="restText">You can't recieve any job order!!!</ion-label>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+
+    <div class="wholeContent">
+        <ion-grid *ngIf=apple>
+            <div class="cardContent" *ngFor="let item of FinalArrayJobs">
+                <div>
+                    <ion-card [id]="item._id" style="background-color: rgb(255, 255, 255);" class="card">
+                        <div *ngIf="item.service_booking =='MassageTherapist'">
+                            <ion-img src="assets/images/massage.jpg"></ion-img>
+                        </div>
+                        <div *ngIf="item.service_booking =='TutorCumNanny'">
+                            <ion-img src="assets/images/tutor.jpg"></ion-img>
+                        </div>
+                        <div *ngIf="item.service_booking =='Nanny'">
+                            <ion-img src="assets/images/nanny.jpg"></ion-img>
+                        </div>
+                        <div *ngIf="item.service_booking == 'Housekeeping'">
+                            <ion-img src="assets/images/housekeeping.png"></ion-img>
+                        </div>
+                        <div *ngIf="item.service_booking == 'Haircut'">
+                            <ion-img src="assets/images/haircut.png"></ion-img>
+                        </div>
+                        <ion-card-title class="title">{{ item.author.name }}</ion-card-title>
+                        <ion-card-subtitle style="font-size: 15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                            Customer Name
+                        </ion-card-subtitle>
+                        <ion-card-content (click)="passToOrders(item)">
+                            <section>
+                                <ion-icon name="time"></ion-icon>
+                                <span>{{item.updatedAt | date:'short'}}</span>
+                            </section>
+                            <section>
+                                <ion-icon name="people"></ion-icon>
+                                <span>{{item.service_booking}}</span>
+                            </section>
+                            <section>
+                                <ion-icon name="location"></ion-icon>
+                                <span>{{item.service_location}}</span>
+                            </section>
+                            <section>
+                                <ion-icon name="mail"></ion-icon>
+                                <span>{{item.notes}}</span>
+                            </section>
+
+                            <div class="footer">
+                                <p class="peso">Price rate: <span>&nbsp; &#8369; {{item.cost}}.00</span> </p>
+
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </div>
+        </ion-grid>
+    </div>
+
+</ion-content>
