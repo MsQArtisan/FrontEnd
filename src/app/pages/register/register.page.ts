@@ -89,18 +89,7 @@ export class RegisterPage implements OnInit {
     }
   }
 
-// onFileChange(event, type){
-//   const reader = new FileReader()
-//   if(event.target.files && event.target.files.length){
-//     const [file] = event.target.files;
-//     reader.readAsDataURL(file);
-//     reader.onload =() =>{
-//       this.data.patchValue({
-//         tso: reader.result
-//       })
-//     }
-//   }
-// }
+
 
   ngOnInit() {
   }
@@ -122,4 +111,12 @@ export class RegisterPage implements OnInit {
       })
     });
   }
+
+  // register() {
+  //   this.authService.register(this.credentialsForm, this.selfie, this.primaryIdPic, this.nbi ).subscribe(data => {
+  //     if (data) {
+  //       this.router.navigate(['login'])
+  //     }
+  //   })
+  // }
 }

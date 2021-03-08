@@ -16,12 +16,13 @@ export class AccInfoPage implements OnInit {
   }
   
   account() {
-    this.authService.getUser().subscribe((data) => {
-      data.data.forEach(element => {
-        this.userAccount = element.selfie
-        this.userName = element.name
-        this.userPhone = element.phone
-      });
+    this.authService.getTheUserIDFromStorage().then(id => {
+      this.authService.getUser(id).subscribe((data) => {
+        data.data.forEach(element => {
+          this.userName = element.name
+          this.userPhone = element.phone
+        });
+      })
     })
   }
 

@@ -22,8 +22,6 @@ export class FinancePage implements OnInit {
   constructor(private authservice: AuthService) { }
   
   ngOnInit() {
-    this.authservice.getUser().subscribe((data) => {
-    })
     this.authservice.monthlyIncomeStatistics({ user: this.authservice.userIDToken }).subscribe((data) => {
       this.dataHandler = data
       this.dataHandler.forEach(element => {

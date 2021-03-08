@@ -24,7 +24,8 @@ export class LivechatPage implements OnInit {
     private pusher: PusherService,
     private authService: AuthService
   ) { }
-
+  
+  public currentUserID = ""
   public messages;
   message: string = '';
   public time = new Date();
@@ -32,7 +33,10 @@ export class LivechatPage implements OnInit {
   lastMessageId;
   currentUser;
   userAccount: string = '';
+
+  
   sendMessage() {
+    
     if (this.message !== '') {
       // Assign an id to each outgoing message. It aids in the process of differentiating between outgoing and incoming messages
       this.lastMessageId = v4();
@@ -44,7 +48,7 @@ export class LivechatPage implements OnInit {
       };
 
       this.http
-        .post(`http://localhost:5000/api/messages`, data)
+        .post(`http://18.220.197.206:5000/api/messages`, data)
         .subscribe((res: Message) => {
           this.messages = res
 
@@ -70,15 +74,21 @@ export class LivechatPage implements OnInit {
     })
     this.account();
 
+
   }
 
   account() {
-    this.authService.getUser().subscribe((data: any) => {
-      this.userAccount = data.data[0];
-      let name = this.userAccount;
-      this.currentUser = name;
-      this.allRecentMessages();
+    this.authService.getTheUserIDFromStorage().then(id => {
+      this.currentUserID = id
+      this.authService.getUser(this.currentUserID).subscribe((data: any) => {
+        console.log(data);
+        this.userAccount = data.data[0];
+        let name = this.userAccount;
+        this.currentUser = name;
+        this.allRecentMessages();
+      })
     })
+    
   }
 
   allRecentMessages() {

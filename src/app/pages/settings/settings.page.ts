@@ -20,12 +20,14 @@ export class SettingsPage implements OnInit {
      {this.menuCtrl.enable(true, 'content-id'); }
 
   ngOnInit() {
-    this.authService.getUser().subscribe((data) => {
-      data.data.forEach(element => {
-        this.userAccount = element.selfie
-        this.userName = element.name
-        this.userEmail = element.email
-      });
+    this.authService.getTheUserIDFromStorage().then(id => {
+      this.authService.getUser(id).subscribe((data) => {
+        data.data.forEach(element => {
+          this.userAccount = element.selfie
+          this.userName = element.name
+          this.userEmail = element.email
+        });
+      })
     })
   } 
 

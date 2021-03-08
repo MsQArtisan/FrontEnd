@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'access_token';
 const userToken = 'user_token';
-const forgotPassURL = 'http://18.220.197.206:5000/api';
+// const forgotPassURL = 'http://18.220.197.206:5000/api';
 
 
 @Injectable({
@@ -21,8 +21,9 @@ export class AuthService {
   public situation = true;
   public messageFromEnd = "";
 
-  url = 'http://18.220.197.206:5000';
- //url = 'http://localhost:5000';
+  //  url = 'http://18.220.197.206:5000';
+
+  url = 'http://localhost:5000';
   user = null;
   authenticationState = new BehaviorSubject(false);
 
@@ -51,6 +52,18 @@ export class AuthService {
     });
   }
 
+  getTheUserIDFromStorage() {
+    return this.storage.get(userToken)
+  }
+
+  imgUpload(selfie, primaryIdPic, nbi) {
+    let data: any = new FormData();
+    data.append("image[]", selfie.image, selfie.imageName);
+    data.append("image[]", primaryIdPic.image, primaryIdPic.imageName);
+    data.append("image[]", nbi.image, nbi.imageName);
+    return this.http.post(`${this.url}/api/upload`, data)
+  }
+
   register(credentials) {
     console.log(credentials)
     return this.http.post(`${this.url}/api/register`, credentials).pipe(
@@ -60,6 +73,23 @@ export class AuthService {
       })
     );
   }
+
+  // register(credentials, selfie, primaryIdPic, nbi) {
+  //   console.log(credentials)
+  //   var formData: any = new FormData()
+  //   formData.append('selfie', credentials.selfie)
+  //   formData.append('primaryIdPic', credentials.primaryIdPic)
+  //   formData.append('nbi', credentials.nbi)
+  //   formData.append('image[]', selfie, credentials.selfie)
+  //   formData.append('image[]', primaryIdPic, credentials.primaryIdPic)
+  //   formData.append('image[]', nbi, credentials.nbi)
+  //   return this.http.post(`${this.url}/api/register`, credentials).pipe(
+  //     catchError(e => {
+  //       this.showAlert(e.error.msg);
+  //       throw new Error(e);
+  //     })
+  //   );
+  // }
 
   login(credentials) {
     return this.http.post(`${this.url}/api/login`, credentials)
@@ -111,8 +141,8 @@ export class AuthService {
     return this.http.get(`${this.url}/api/allMessages`)
   }
 
-  getUser() {
-    return this.http.post<any>(`${this.url}/api/account`, { id: this.userIDToken })
+  getUser(userIDToken) {
+    return this.http.post<any>(`${this.url}/api/account`, { id: userIDToken })
   }
 
   //Check Rejected Model and compare it into the Bookings Model(display all pendings)
@@ -160,26 +190,10 @@ export class AuthService {
     return this.http.post(`${this.url}/api/jobRestored`, { restoreId: id, userId: userTaskId })
   }
 
-  imgUpload(selfie, primaryIdPic, nbi){
-    let data: any = new FormData();
-    data.append("image[]", selfie.image, selfie.imageName);
-    data.append("image[]", primaryIdPic.image, primaryIdPic.imageName);
-    data.append("image[]", nbi.image, nbi.imageName);
-    return this.http.post(`${this.url}/api/upload`,data)
-     //return this.http.post(`${this.url_local}/api/upload`, data)
-  }
-
   requestReset(body): Observable<any> {
-    return this.http.post(`${forgotPassURL}/reqResetPassword`, body);
+    return this.http.post(`${this.url}/api/reqResetPassword`, body);
   }
 
-  newPassword(body): Observable<any> {
-    return this.http.post(`${forgotPassURL}/new-password`, body);
-  }
-
-  ValidPasswordToken(body): Observable<any> {
-    return this.http.post(`${forgotPassURL}/valid-password-token`, body);
-  }
   getAllActiveUsers() {
     return this.http.get(`${this.url}/api/allActiveUsers`)
   }

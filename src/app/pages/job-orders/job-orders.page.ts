@@ -105,6 +105,8 @@ export class JobOrdersPage implements OnInit {
   }
 
   async passToOrders(item) {
+    console.log(item);
+    
     document.getElementById(item._id).style.display = 'none'
     const modal = await this.modalController.create({
       component: OrdersPage,
