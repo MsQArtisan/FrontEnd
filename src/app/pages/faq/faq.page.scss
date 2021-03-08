@@ -1,6 +1,7 @@
 @import "../../../global.scss";
 * {
     font-family: lato;
+    
 }
 
 .header {
@@ -9,4 +10,24 @@
     font-weight: lighter;
     color: rgb(0, 0, 0);
     letter-spacing: 1.5px;
+}
+
+.num{
+    background-color: #236ca3;
+    border-radius: 50%;
+    height: 37px;
+    width: 41px;
+    text-align: center;
+}
+h1{
+    font-weight: bold;
+    color: white;
+}
+p{
+    text-align: justify;
+}
+ion-card{
+    padding: 3%;
+    color: rgb(42, 70, 99);
+    background-color: gainsboro;
 }

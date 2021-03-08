@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'access_token';
 const userToken = 'user_token';
-// const forgotPassURL = 'http://18.220.197.206:5000/api';
+const forgotPassURL = 'http://18.220.197.206:5000/api';
 
 
 @Injectable({
@@ -21,9 +21,9 @@ export class AuthService {
   public situation = true;
   public messageFromEnd = "";
 
-  //  url = 'http://18.220.197.206:5000';
+  url = 'http://18.220.197.206:5000';
 
-  url = 'http://localhost:5000';
+  //url = 'http://localhost:5000';
   user = null;
   authenticationState = new BehaviorSubject(false);
 

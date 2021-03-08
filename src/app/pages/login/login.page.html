@@ -31,9 +31,9 @@
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
                 <div class="input-group-append">
                     <span *ngIf="booleanIdentify" class="input-group-text" (click)="showAndHidePass('text')"><i
-                            class="fa fa-eye"></i></span>
-                    <span *ngIf="!booleanIdentify" class="input-group-text" (click)="showAndHidePass('password')"><i
                             class="fa fa-eye-slash"></i></span>
+                    <span *ngIf="!booleanIdentify" class="input-group-text" (click)="showAndHidePass('password')"><i
+                            class="fa fa-eye"></i></span>
                 </div>
                 <li *ngIf="passwordMessage">Your password is incorrect!</li>
             </div><br>

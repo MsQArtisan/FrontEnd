@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 })
 export class JobOrdersPage implements OnInit {
   public valueChosen = ""
-
   public apple: boolean = true;
 
   public dataFromModal;
@@ -31,7 +30,6 @@ export class JobOrdersPage implements OnInit {
 
   orderData() {
     this.authService.getCustomersName().subscribe((jobs) => {
-      
       this.arrayOfJobs = jobs.data;
       this.DisplayFinalJobs();
     })
@@ -48,17 +46,13 @@ export class JobOrdersPage implements OnInit {
               jobs.splice(jobs.indexOf(reject), 1)
             }
           })
-
         })
         this.FinalArrayJobs = jobs;
       }
-
       else {
         this.FinalArrayJobs=this.arrayOfJobs;
       }
-
     })
-
   }
 
   //Filtered by JobOrders Category
@@ -98,10 +92,6 @@ export class JobOrdersPage implements OnInit {
     } else {
       this.apple = true
     }
-  }
-
-  selectedOption() {
-    // console.log(this.valueChosen)
   }
 
   async passToOrders(item) {

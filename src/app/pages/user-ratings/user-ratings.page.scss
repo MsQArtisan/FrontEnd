@@ -12,7 +12,12 @@
 }
 
 ion-card{
+    height: 98%;
+    background-color: aliceblue;
     text-align: center;
+}
+ion-card-header{
+    margin-top: 15%;
 }
 .rate{
     width: 180px;

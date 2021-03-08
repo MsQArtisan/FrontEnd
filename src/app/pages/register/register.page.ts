@@ -12,6 +12,11 @@ export class RegisterPage implements OnInit {
   public selfie: any;
   public primaryIdPic: any;
   public nbi: any;
+  public booleanIdentify = true
+  public passwordOrText = "password"
+  public confirmIdentify = true
+  public cpassword = "cpassword"
+
 
   // for testing only
   // credentialsForm = {
@@ -92,6 +97,26 @@ export class RegisterPage implements OnInit {
 
 
   ngOnInit() {
+  }
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+  }
+
+  showAndHidePass(type) {
+    this.passwordOrText = type
+    if (this.booleanIdentify) {
+      this.booleanIdentify = false
+    } else {
+      this.booleanIdentify = true
+    }
+  }
+  showAndHideCPass(type) {
+    this.cpassword = type
+    if (this.confirmIdentify) {
+      this.confirmIdentify = false
+    } else {
+      this.confirmIdentify = true
+    }
   }
 
   register() {

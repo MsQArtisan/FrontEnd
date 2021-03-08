@@ -31,47 +31,5 @@
                 <ion-select-option *ngFor='let val of places'>{{capitalizeFirstLetter(val.muni)}}</ion-select-option>
             </ion-select>
         </ion-item>
-        <ion-item class="share" (click)="hideAndShow()">
-            <ion-icon name="share-social-outline"></ion-icon>
-            <ion-label>Share</ion-label>
-        </ion-item>
     </ion-list>
 </ion-content>
-<ion-footer *ngIf="!footer">
-    <ion-grid>
-        <ion-row class="ion-align-items-center">
-            <ion-col size="4">
-                <ion-button class="link" color="light">
-                    <ion-icon name="share-social-outline"></ion-icon>
-                </ion-button>
-            </ion-col>
-            <ion-col size=4>
-                <ion-button class="link" color="warning">
-                    <ion-icon name="mail-outline"></ion-icon>
-                </ion-button>
-            </ion-col>
-            <ion-col size="4">
-                <ion-button class="link" color="primary">
-                    <ion-icon name="logo-facebook"></ion-icon>
-                </ion-button>
-            </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center">
-            <ion-col size="4">
-                <ion-button class="link" color="success" >
-                    <ion-icon name="logo-whatsapp"></ion-icon>
-                </ion-button>
-            </ion-col>
-            <ion-col size="4">
-                <ion-button class="link" color="secondary">
-                    <ion-icon name="logo-twitter"></ion-icon>
-                </ion-button>
-            </ion-col>
-            <ion-col size=4>
-                <ion-button class="link" color="tertiary">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-</ion-footer>

@@ -22,8 +22,6 @@ export class OrdersPage implements OnInit {
   ngOnInit() {
     this.authService.getCustomersData(this.id).subscribe((data) => {
       this.jobOffer = data
-  
-      
     })
   }
 

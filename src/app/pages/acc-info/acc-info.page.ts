@@ -6,9 +6,10 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./acc-info.page.scss'],
 })
 export class AccInfoPage implements OnInit {
-  userAccount;
+  userPhoto;
   userName;
-  userPhone
+  userPhone;
+  userEmail;
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -19,8 +20,10 @@ export class AccInfoPage implements OnInit {
     this.authService.getTheUserIDFromStorage().then(id => {
       this.authService.getUser(id).subscribe((data) => {
         data.data.forEach(element => {
+          this.userPhoto = element.selfie
           this.userName = element.name
           this.userPhone = element.phone
+          this.userEmail = element.email
         });
       })
     })
