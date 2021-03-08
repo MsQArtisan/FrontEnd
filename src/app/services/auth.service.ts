@@ -74,23 +74,6 @@ export class AuthService {
     );
   }
 
-  // register(credentials, selfie, primaryIdPic, nbi) {
-  //   console.log(credentials)
-  //   var formData: any = new FormData()
-  //   formData.append('selfie', credentials.selfie)
-  //   formData.append('primaryIdPic', credentials.primaryIdPic)
-  //   formData.append('nbi', credentials.nbi)
-  //   formData.append('image[]', selfie, credentials.selfie)
-  //   formData.append('image[]', primaryIdPic, credentials.primaryIdPic)
-  //   formData.append('image[]', nbi, credentials.nbi)
-  //   return this.http.post(`${this.url}/api/register`, credentials).pipe(
-  //     catchError(e => {
-  //       this.showAlert(e.error.msg);
-  //       throw new Error(e);
-  //     })
-  //   );
-  // }
-
   login(credentials) {
     return this.http.post(`${this.url}/api/login`, credentials)
       .pipe(

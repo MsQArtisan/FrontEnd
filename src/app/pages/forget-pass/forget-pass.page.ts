@@ -55,4 +55,5 @@ export class ForgetPassPage implements OnInit {
       this.IsvalidForm = false;
     }
   }
+  
 }
